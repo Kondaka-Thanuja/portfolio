@@ -1,0 +1,86 @@
+
+.Projects {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+  font-size: 22px;
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.project-row.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.project-content {
+  flex: 1;
+  padding: 1rem;
+  min-width: 300px;
+  
+}
+
+.project-image {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  min-width: 300px;
+}
+
+.project-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.project-img:hover {
+  transform: scale(1.05);
+}
+
+.project-title {
+  padding: 2rem;
+}
+.view-demo {
+  color: blue; /* Link color */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold; /* Makes it stand out */
+}
+
+.view-demo:hover {
+  color: darkblue; /* Hover effect */
+  text-decoration: underline;
+}
+.project-locked {
+  position: relative;
+  cursor: pointer;
+}
+
+.project-img.locked {
+  opacity: 0.5;
+}
+
+.project-locked .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-warning {
+  color: red;
+  font-style: italic;
+}
+
+

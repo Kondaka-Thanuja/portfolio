@@ -54,7 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 30px;
+    gap: 20px;
 }
 .contact-right label{
     color: #D8D8D8;
@@ -96,4 +96,56 @@
 .contact-submit:hover{
     transform: scale(1.1);
     transition: 0.3s;
+}
+
+@media(max-width:768px){
+  .contact{
+    margin:50px 20px;
+
+  }
+  .contact-section {
+    flex-direction: column;
+    gap:40px;
+  }
+  .contact-left p{
+    font-size: 16px;
+    line-height: 30px ;
+
+  }
+  .contact-left h1{
+    font-size: 30px;
+  }
+  .contact-details{
+    gap:10px;
+  color:beige;
+  }
+  .contact-detail{
+    gap:10px;
+    font-size: 16px;
+  }
+  
+  .contact-right label{
+    font-size: 16px;
+  }
+  .contact-right input{
+    height:40px;
+    padding-left:10px;
+    font-size: 16px;
+    width: 90%;
+  }
+  .contact-title{
+    display:flex;
+    background: linear-gradient(90deg, #DA7C25, #B923E1); /* Gradient colors */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text; /* Standard */
+  color: transparent; /* Hide the default text color */
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight:800px;
+  }
+  .contact-right textarea{
+    width: 450px;
+  }
+  .form-submit{
+    padding: 10px;
+  }
 }
