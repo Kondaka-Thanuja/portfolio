@@ -10,7 +10,7 @@ const Footer=()=>{
         <div id="footer">
             <hr/>
             <div className="footer">
-                <div className="copy">copy righ @</div>
+                <div className="copy">copy right &copy;</div>
                 <div className="name">Kondaka Thanuja</div>
                 <div className="mail">#kondakathanuja@gmail.com</div>
             </div>

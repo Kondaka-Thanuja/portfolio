@@ -20,8 +20,6 @@
     gap:10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    
-   
 }
 .coding-title h1{
     margin-top: 50px;
@@ -94,40 +92,43 @@ a{
     justify-content: space-between; 
     margin-top: 50px; 
 }
-@media(max-width:768px){
-  .coding-skills{
-    margin:50px 20px;
-  }
-  .about-Achievements{
-    justify-content: space-between;
-    margin:50px 20px;
 
+/* ----------------- RESPONSIVENESS ----------------- */
+/* Mobile view adjustments */
+@media (max-width: 600px) {
+  .coding {
   }
-  .about-achievement{
+  .code {
+    width: 90%;
+    height: auto;
+  }
+}
+
+/* ----------------- RESPONSIVENESS ----------------- */
+@media (max-width: 600px) {
+  .coding {
+    flex-direction: column;
     align-items: center;
-    gap: 10px
-  }
-  .about-achievement h1{
-    font-size: 30px;
-    font-weight: 700px;
-  }
-  .about-achievement p{
-    text-align: center;
-    font-size:16px;
-  }
-  .symbol{
-    object-fit: cover;
-  }
-  .coding-para{
-    margin-top: 0;
-    font-size: 18px;
-  }
-  .coding-links{
-    gap:10px;
-  }
-  .coding-link{
-    font-size:16px;
-    gap:10px
+    gap: 20px;
   }
 
+  .code {
+    width: 90%;
+    height: auto;
+  }
+
+  .about-achievements {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* Hide the horizontal lines in mobile */
+  .about-achievements hr {
+    display: none;
+  }
+
+  .about-achievement {
+    text-align: center;
+  }
 }

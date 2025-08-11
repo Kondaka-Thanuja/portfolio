@@ -107,22 +107,38 @@
     
 }
 
-@media(max-width:768px){
-  .about{
-    margin: 50px 20px;
-  }
-  .about-sections{
+
+/* ----------------- RESPONSIVENESS ----------------- */
+
+/* Tablet view adjustments */
+@media (max-width: 1024px) {
+  .about-sections {
     flex-direction: column;
+    gap: 40px;
   }
-  .about-right{
-    display:none;
+  .about-achievements {
+    flex-wrap: wrap;
+    gap: 20px;
   }
-  .about-para{
-    font-size:18px;
-    line-height:32px;
-  }
-    .about-skills {
-      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-      gap: 12px;
-    }
 }
+
+/* Mobile view adjustments */
+@media (max-width: 600px) {
+  .about-title h1 {
+    font-size: 36px;
+  }
+  .about-achievement h1 {
+    font-size: 40px;
+  }
+  .about-achievement p {
+    font-size: 18px;
+  }
+  .about-skill {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+
+  

@@ -81,6 +81,7 @@
 .login-warning {
   color: red;
   font-style: italic;
+  cursor: pointer;
 }
 
 

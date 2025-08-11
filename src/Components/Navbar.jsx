@@ -2,16 +2,16 @@ import { useState, useRef } from "react";
 import { FaHome, FaTools, FaPhoneAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 import { IoIosLogIn } from "react-icons/io";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
+import { Link, useLocation } from "react-router-dom"; // <-- import useLocation
 import { useAuth } from "./auth";
-
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, logged, logout } = useAuth();
   const menuRef = useRef();
+  const location = useLocation(); 
 
   const openMenu = () => {
     menuRef.current.style.right = "0";
@@ -20,16 +20,30 @@ const Navbar = () => {
     menuRef.current.style.right = "-350px";
   };
 
-  const [menu, setMenu] = useState("home");
   const [hoveredItem, setHoveredItem] = useState(null);
 
-  const isActive = (item) => menu === item;
+  // Derive active tab from the current path
+  const getActiveTab = () => {
+    const path = location.pathname;
+    if (path === "/") return "home";
+    if (path.startsWith("/about")) return "about";
+    if (path.startsWith("/coding")) return "coding";
+    if (path.startsWith("/contact")) return "contact";
+    if (path.startsWith("/projects")) return "projects";
+    if (path.startsWith("/login")) return "login";
+    return ""; // default none
+  };
+
+  const activeTab = getActiveTab();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <div className="navbar">
       <h1>Thanuja</h1>
 
-      {/* Mobile menu open icon */}
       <MdOutlineMenu
         onClick={openMenu}
         style={{ fontSize: 30 }}
@@ -37,7 +51,6 @@ const Navbar = () => {
       />
 
       <ul ref={menuRef} className="nav-menu">
-        {/* Mobile menu close icon */}
         <IoMdClose
           onClick={closeMenu}
           className="nav-mob-close"
@@ -50,19 +63,18 @@ const Navbar = () => {
             cursor: "pointer",
             width: "100px",
             textAlign: "center",
-            borderBottom: isActive("home") ? "2px solid #f1356d" : "none",
+            borderBottom: activeTab === "home" ? "2px solid #f1356d" : "none",
           }}
           onMouseEnter={() => setHoveredItem("home")}
           onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("home")}
         >
-          <AnchorLink offset={50} href="#hero" className="color">
+          <Link to="/" className="color">
             {hoveredItem === "home" ? (
               <FaHome style={{ fontSize: 25 }} />
             ) : (
               "Home"
             )}
-          </AnchorLink>
+          </Link>
         </li>
 
         {/* About */}
@@ -71,19 +83,18 @@ const Navbar = () => {
             cursor: "pointer",
             width: "100px",
             textAlign: "center",
-            borderBottom: isActive("about") ? "2px solid #f1356d" : "none",
+            borderBottom: activeTab === "about" ? "2px solid #f1356d" : "none",
           }}
           onMouseEnter={() => setHoveredItem("about")}
           onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("about")}
         >
-          <AnchorLink offset={50} href="#about" className="color">
+          <Link to="/about" className="color">
             {hoveredItem === "about" ? (
               <MdPerson style={{ fontSize: 25 }} />
             ) : (
               "About Me"
             )}
-          </AnchorLink>
+          </Link>
         </li>
 
         {/* Coding */}
@@ -92,40 +103,18 @@ const Navbar = () => {
             cursor: "pointer",
             width: "100px",
             textAlign: "center",
-            borderBottom: isActive("coding") ? "2px solid #f1356d" : "none",
+            borderBottom: activeTab === "coding" ? "2px solid #f1356d" : "none",
           }}
           onMouseEnter={() => setHoveredItem("coding")}
           onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("coding")}
         >
-          <AnchorLink offset={50} href="#coding" className="color">
+          <Link to="/coding" className="color">
             {hoveredItem === "coding" ? (
               <FaTools style={{ fontSize: 25 }} />
             ) : (
               "Coding"
             )}
-          </AnchorLink>
-        </li>
-
-        {/* Projects */}
-        <li
-          style={{
-            cursor: "pointer",
-            width: "100px",
-            textAlign: "center",
-            borderBottom: isActive("projects") ? "2px solid #f1356d" : "none",
-          }}
-          onMouseEnter={() => setHoveredItem("projects")}
-          onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("projects")}
-        >
-          <AnchorLink offset={50} href="#projects" className="color">
-            {hoveredItem === "projects" ? (
-              <FaTools style={{ fontSize: 25 }} />
-            ) : (
-              "Projects"
-            )}
-          </AnchorLink>
+          </Link>
         </li>
 
         {/* Contact */}
@@ -134,49 +123,80 @@ const Navbar = () => {
             cursor: "pointer",
             width: "100px",
             textAlign: "center",
-            paddingBottom: "4px",
-            borderBottom: isActive("contact") ? "2px solid #f1356d" : "none",
+            borderBottom: activeTab === "contact" ? "2px solid #f1356d" : "none",
           }}
           onMouseEnter={() => setHoveredItem("contact")}
           onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("contact")}
         >
-          <AnchorLink offset={50} href="#contact" className="color">
+          <Link to="/contact" className="color">
             {hoveredItem === "contact" ? (
               <FaPhoneAlt style={{ fontSize: 25 }} />
             ) : (
               "Contact"
             )}
-          </AnchorLink>
+          </Link>
         </li>
 
-        {/* Login */}
+        {/* Projects */}
         <li
           style={{
             cursor: "pointer",
             width: "100px",
             textAlign: "center",
-            paddingBottom: "4px",
-            borderBottom: isActive("login") ? "2px solid #f1356d" : "none",
+            borderBottom: activeTab === "projects" ? "2px solid #f1356d" : "none",
+          }}
+          onMouseEnter={() => setHoveredItem("projects")}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <Link to="/projects" className="color">
+            {hoveredItem === "projects" ? (
+              <FaTools style={{ fontSize: 25 }} />
+            ) : (
+              "Projects"
+            )}
+          </Link>
+        </li>
+
+        {/* Login/Logout */}
+        <li
+          style={{
+            cursor: "pointer",
+            width: "100px",
+            textAlign: "center",
+            borderBottom: activeTab === "login" ? "2px solid #f1356d" : "none",
           }}
           onMouseEnter={() => setHoveredItem("login")}
           onMouseLeave={() => setHoveredItem(null)}
-          onClick={() => setMenu("login")}
         >
-          <a href="#login" className="color" style={{ textDecoration: "none" }}>
-            {hoveredItem === "login" ? (
-              <IoIosLogIn style={{ fontSize: 25 }} />
-            ) : (
-              "Login"
-            )}
-          </a>
+          {logged ? (
+            <div onClick={handleLogout} style={{ color: "white" }}>
+              {hoveredItem === "login" ? (
+                <IoIosLogIn style={{ fontSize: 25 }} />
+              ) : (
+                "Logout"
+              )}
+            </div>
+          ) : (
+            <Link to="/login" className="color">
+              {hoveredItem === "login" ? (
+                <IoIosLogIn style={{ fontSize: 25 }} />
+              ) : (
+                "Login"
+              )}
+            </Link>
+          )}
         </li>
+        {logged && (
+          <li style={{ color: "gray", textAlign: "center" }}>
+            {user.role}
+          </li>
+        )}
       </ul>
 
       <div className="nav-connect">
-        <AnchorLink href="#contact" className="color">
+        <Link to="/contact" className="color">
           Connect with me
-        </AnchorLink>
+        </Link>
       </div>
     </div>
   );

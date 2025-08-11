@@ -2,8 +2,10 @@ import React from "react";
 import "./Hero.css";
 import me from "../../assets/me.jpg";
 import AnchorLink from "react-anchor-link-smooth-scroll"; // ✅ Import for smooth scroll
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate()
   return (
     <div className="hero" id="hero">
       <img src={me} alt="Thanuja" />
@@ -16,9 +18,9 @@ const Hero = () => {
       </p>
       <div className="hero-action">
         {/* ✅ Same class name, now wrapped in AnchorLink */}
-        <AnchorLink href="#contact" className="hero-connect">
+        <span className="hero-connect" onClick={() => navigate("/contact")}>
           Connect With Me
-        </AnchorLink>
+        </span>
         <div className="hero-resume">My resume</div>
       </div>
     </div>

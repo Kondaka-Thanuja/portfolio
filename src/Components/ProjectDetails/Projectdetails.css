@@ -1,0 +1,24 @@
+/* ----------------- RESPONSIVENESS ----------------- */
+
+/* Tablet view adjustments */
+@media (max-width: 1024px) {
+  .project-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .project-content, .project-image {
+    min-width: unset;
+    padding: 1rem;
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 600px) {
+  .Projects {
+    font-size: 18px;
+    padding: 1rem;
+  }
+  .project-img {
+    max-width: 100%;
+  }
+}
