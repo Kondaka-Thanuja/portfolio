@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Projects.css";
 import digitalclock from "../../assets/digitalclock.jpg";
 import weather from "../../assets/weather.jpg";
-import { useAuth } from "../auth";
+import { useAuth } from "../Auth";
 import { useNavigate } from "react-router-dom";
 
 const defaultProjects = [

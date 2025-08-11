@@ -5,7 +5,7 @@ import { IoIosLogIn } from "react-icons/io";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom"; // <-- import useLocation
-import { useAuth } from "./auth";
+import { useAuth } from "./Auth";
 import "./Navbar.css";
 
 const Navbar = () => {
