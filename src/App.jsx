@@ -10,8 +10,8 @@ import Contact from "./Components/Contact/Contact";
 import Login from "./Components/Login/Login";
 import Footer from "./Components/Footer/Footer";
 import Admin from "./Components/Admin/Admin";
-import { AuthProvider } from "./Components/auth";
 import ProtectedRoute from "./Components/ProtectedRoutes/ProtectedRoutes";
+import { AuthProvider } from "./Components/Auth";
 
 function App() {
 
